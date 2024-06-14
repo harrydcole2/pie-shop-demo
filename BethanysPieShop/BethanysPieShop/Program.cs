@@ -13,6 +13,7 @@ builder.Services.AddSession(); // services that enable session state
 builder.Services.AddHttpContextAccessor(); // services that enable access to HttpContext
 
 builder.Services.AddControllersWithViews(); //framework services that enable MVC
+builder.Services.AddRazorPages(); //framework services that enable Razor Pages
 builder.Services.AddDbContext<BethanysPieShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) //GetConnectionString is shorthand appsettings.json reference
 ); // add dbContext for Entity Framework Core
@@ -28,6 +29,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultControllerRoute(); // sets MVC defaults with {controller=Home}/{action=Index}/{id?} convention mirroring code (instead of MapControllerRoute)
+app.MapRazorPages(); // middleware that sets up Razor Pages by enabling Razor Page model
+
 DbInitializer.Seed(app); // seed the database if there's no data already in it
 
 app.Run();
