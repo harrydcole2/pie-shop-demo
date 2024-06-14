@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Libraries you should add yourself
+/wwwroot/lib/
+
