@@ -5,6 +5,12 @@ var builder = WebApplication.CreateBuilder(args); // applies defaults: looks at 
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPieRepository, PieRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp)); //passes in a service provider and already calls a method
+
+builder.Services.AddSession(); // services that enable session state
+builder.Services.AddHttpContextAccessor(); // services that enable access to HttpContext
 
 builder.Services.AddControllersWithViews(); //framework services that enable MVC
 builder.Services.AddDbContext<BethanysPieShopContext>(options =>
@@ -14,6 +20,7 @@ builder.Services.AddDbContext<BethanysPieShopContext>(options =>
 var app = builder.Build(); // the instance that allows us to set up middleware
 
 app.UseStaticFiles(); // middleware that serves static files in wwwroot
+app.UseSession(); // middleware that enables session state
 
 if (app.Environment.IsDevelopment())
 {

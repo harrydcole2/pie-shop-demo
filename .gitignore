@@ -398,5 +398,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Libraries you should add yourself
-/wwwroot/lib/
+/BethanysPieShop/BethanysPieShop/wwwroot/lib/
 
