@@ -51,5 +51,10 @@ namespace BethanysPieShop.Controllers
                 return NotFound(); //basically a built in 404 page
             return View(pie);
         }
+
+        public IActionResult Search()
+        {
+            return View();
+        }
     }
 }

@@ -29,5 +29,10 @@ namespace BethanysPieShop.Models
         {
             return _bethanysPieShopContext.Pies.FirstOrDefault(p => p.PieId == pieId);
         }
+
+        public IEnumerable<Pie> SearchPies(string searchQuery)
+        {
+            return _bethanysPieShopContext.Pies.Where(p => p.Name.Contains(searchQuery));
+        }
     }
 }
