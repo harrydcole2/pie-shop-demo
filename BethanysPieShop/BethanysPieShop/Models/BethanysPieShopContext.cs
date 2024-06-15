@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace BethanysPieShop.Models
 {
-    public class BethanysPieShopContext : DbContext
+    public class BethanysPieShopContext : IdentityDbContext //inherits from IdentityDbContext when auth is added, dbContext before
     {
         public BethanysPieShopContext(DbContextOptions<BethanysPieShopContext> options)
             : base(options) { }
