@@ -22,7 +22,7 @@ builder
 
 builder.Services.AddRazorPages(); //framework services that enable Razor Pages
 builder.Services.AddDbContext<BethanysPieShopContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) //GetConnectionString is shorthand appsettings.json reference (didn't change)
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")) //GetConnectionString is shorthand appsettings.json reference (didn't change?)
 ); // add dbContext for Entity Framework Core
 
 builder
@@ -34,6 +34,7 @@ var app = builder.Build(); // the instance that allows us to set up middleware
 app.UseStaticFiles(); // middleware that serves static files in wwwroot
 app.UseSession(); // middleware that enables session state
 app.UseAuthentication(); // middleware that enables authentication, with the nuget auth package
+app.UseAuthorization(); // middleware for authorization, e.g. [Authorize] attribute
 
 if (app.Environment.IsDevelopment())
 {

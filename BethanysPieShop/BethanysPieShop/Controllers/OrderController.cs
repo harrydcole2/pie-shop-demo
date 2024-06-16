@@ -1,8 +1,10 @@
 ﻿using BethanysPieShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShop.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderRepository _orderRepository;
@@ -14,7 +16,7 @@ namespace BethanysPieShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
-        public IActionResult Checkout()
+        public IActionResult Checkout() //GET default
         {
             return View();
         }
@@ -37,12 +39,12 @@ namespace BethanysPieShop.Controllers
                 return RedirectToAction("CheckoutComplete");
             }
             return View(order);
-
         }
 
         public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy our delicious pies!";
+            ViewBag.CheckoutCompleteMessage =
+                "Thanks for your order. You'll soon enjoy our delicious pies!";
             return View();
         }
     }
